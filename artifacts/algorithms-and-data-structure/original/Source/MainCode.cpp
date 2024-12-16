@@ -22,7 +22,7 @@
 namespace
 {
 	// Macro for window title
-	const char* const WINDOW_TITLE = "7-1 FinalProject and Milestones";
+	const char* const WINDOW_TITLE = "3DModelingProject";
 
 	// Main GLFW window
 	GLFWwindow* g_Window = nullptr;
