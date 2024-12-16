@@ -1,77 +1,114 @@
-# Informal Code Review: Software Design and Engineering Artifact
+# Informal Code Review: ePortfolio Artifacts
 
 ## Introduction
 
-The artifact I have chosen for this review is a 3D modeling project that I initially created as part of a prior course in the Computer Science program. This project involves developing a basic 3D rendering engine using C++ and OpenGL. Although the project was functional, it lacked several important enhancements that could improve both its functionality and design. Revisiting this project provided me with an opportunity to enhance the code and demonstrate my skills in software design, with a focus on improving the structure, readability, and performance of the existing implementation.
+For my ePortfolio, I am presenting two key artifacts that showcase my growth as a Computer Science student: a **3D Modeling Project** and a **MongoDB Database Project**. The first artifact demonstrates my understanding of **Software Design** and **Algorithms**, while the second artifact highlights my skills in **Databases**. In this code review, I will provide an analysis of the current functionality, areas for improvement, and planned enhancements for both artifacts, aligning with the course outcomes.
 
-## Existing Functionality
+### Artifacts:
+1. **3D Modeling Project** (Software Design and Algorithms)
+2. **MongoDB Database Project** (Databases)
 
-The current project consists of several files including `scenemanager.h`, `scenemanager.cpp`, `viewmanager.h`, `viewmanager.cpp`, `shapemeshes.cpp`, `shadermanager.cpp`, and `maincode.cpp`. These components work together to form a basic 3D rendering engine. The core functionality includes:
+## 1. 3D Modeling Project (Software Design and Algorithms)
 
-1. **Rendering 3D Objects**: The program uses **OpenGL shaders and meshes** to render 3D objects in a scene.
-2. **Scene Management**: The `scenemanager.cpp` file handles the initialization of objects, textures, and shaders.
-3. **Camera Controls**: The `viewmanager.cpp` file handles basic camera movement, allowing users to navigate the 3D space via keyboard and mouse input.
-4. **Shader Management**: The `shadermanager.cpp` file loads and compiles shaders necessary for rendering.
-5. **Object Management**: The `shapemeshes.cpp` class defines the geometries and textures of 3D objects.
+### Existing Functionality
 
-While the system functions, it is still limited by several aspects that can be improved, such as the lack of error handling, scalability issues due to fixed-size arrays, and underdeveloped user interactions.
+The **3D Modeling Project** involves developing a basic 3D rendering engine using **OpenGL** and **C++**. The project includes key files such as `scenemanager.h`, `scenemanager.cpp`, `viewmanager.h`, `viewmanager.cpp`, `shapemeshes.cpp`, `shadermanager.cpp`, and `maincode.cpp`. The existing functionality includes:
 
-## Code Analysis
+1. **Scene Management**: The scene manager initializes 3D objects, textures, and shaders, and handles the creation and destruction of objects in the scene.
+   
+2. **3D Rendering**: OpenGL is used for rendering objects like meshes, applying shaders and textures to 3D models.
+   
+3. **Camera Movement**: The `viewmanager.cpp` handles basic camera controls via keyboard and mouse. Movement is functional but limited and lacks smooth transitions.
 
-### Areas for Improvement
+4. **Shader Management**: The `shadermanager.cpp` file manages shader loading, compiling, and binding for rendering objects.
 
-The existing codebase demonstrates foundational concepts, but there are several areas that could be improved to make the system more robust, maintainable, and scalable:
+5. **Main Program Logic**: The `maincode.cpp` handles OpenGL initialization, window setup, and the main rendering loop.
 
-1. **Structure and Modularity**:
-   - The current codebase has some tightly coupled components, making it harder to maintain and extend. For instance, the `scenemanager.cpp` file handles both scene setup and object management. Separating these responsibilities could improve code clarity and modularity.
-   - There is also an opportunity to improve the separation of concerns by creating more reusable functions and classes to handle specific tasks (e.g., error handling, resource loading).
+### Code Analysis
 
-2. **Efficiency**:
-   - The project uses fixed-size arrays like `m_textureIDs[16]`, which limit the scalability of the application. This could be replaced with dynamic containers like `std::vector` to allow for more flexibility in managing resources such as textures.
-   - Shader and texture loading are inefficient and could be optimized to reduce overhead.
+The **current codebase** has several areas for improvement:
 
-3. **Error Handling**:
-   - The current code does not handle errors effectively. For example, invalid file paths or failed OpenGL bindings are not properly managed, leading to potential crashes.
-   - Adding robust error handling, such as exception handling or proper return value checks, would increase the stability of the application.
+- **Camera Controls**: The existing camera system uses basic controls and can be **jerky and unresponsive**. Additionally, there is no support for smooth transitions or dynamic speed adjustments.
+  
+  **Improvement Plan**: I will enhance the camera controls to make them **smoother** and **more responsive**. This will include **mouse-driven camera movement** and the ability to dynamically adjust the camera speed based on user input. Additionally, I plan to introduce **projection switching** between perspective and orthographic views to provide more flexibility in viewing 3D scenes.
 
-4. **Functionality and Usability**:
-   - The camera controls are basic and can be enhanced to allow for smoother, more intuitive movement. Currently, the camera controls can feel abrupt, and there is no way to adjust the camera's speed dynamically based on user input.
-   - The system lacks features such as toggling between different projection views (e.g., perspective vs. orthographic), which could be added to improve the user experience.
+- **Efficiency**: The project uses **static arrays** (e.g., `m_textureIDs[16]`), which limits scalability and flexibility.
 
-5. **Commenting and Documentation**:
-   - The code lacks sufficient comments and documentation. While some areas have basic inline comments, many sections lack descriptions of what the functions and classes do. Adding detailed comments throughout the code will improve its readability and maintainability, making it easier for other developers (and future myself) to understand the code.
+  **Improvement Plan**: I will refactor the code to use **dynamic containers** like `std::vector`, allowing the program to handle varying amounts of texture data without the limitations of a fixed array.
 
-## Enhancement Plans
+- **Error Handling**: The project lacks sufficient error handling, particularly for issues related to file loading, OpenGL initialization, and resource management.
 
-Based on the analysis of the existing code, the following enhancements are planned to improve the overall functionality, performance, and maintainability of the project:
+  **Improvement Plan**: I will implement **robust error handling** throughout the codebase to ensure that failures in texture loading, shader compilation, and OpenGL bindings do not crash the program.
 
-### 1. **Refactor Code for Modularity and Maintainability**:
-   - **Break down large classes and functions**: For example, separating scene management and object handling into different classes will make the codebase more modular and easier to maintain.
-   - **Refactor camera controls**: Improve the `viewmanager.cpp` class to include smoother camera movement with dynamic speed adjustments based on user input.
+- **Documentation**: The code lacks comprehensive **comments** and **documentation**, making it difficult for others to understand or maintain.
 
-### 2. **Replace Fixed-size Arrays with Dynamic Containers**:
-   - Replace the `m_textureIDs[16]` array with `std::vector` to handle dynamic amounts of texture data more effectively. This will make the project more scalable and flexible as the number of textures grows.
+  **Improvement Plan**: I will add detailed comments throughout the key files, particularly the scene manager, view manager, and shader manager, to improve readability and maintainability.
 
-### 3. **Implement Robust Error Handling**:
-   - Add proper **error checks** in critical sections, such as when loading files (shaders, textures) or initializing OpenGL contexts. This will prevent the program from crashing when these operations fail and provide better user feedback.
+### Enhancement Plan
 
-### 4. **Enhance Camera Functionality**:
-   - Implement **smooth mouse-driven camera movement** and allow for dynamic adjustments of camera speed based on user input (e.g., keyboard events for increasing/decreasing camera speed).
-   - Add **projection switching** between perspective and orthographic views to provide the user with more flexibility when viewing the 3D scene.
+The planned enhancements will focus on:
 
-### 5. **Improve Documentation and Commenting**:
-   - Increase the **amount of inline comments** and provide more **descriptive function headers** to explain the purpose and functionality of key components. Additionally, update the `README.md` file to describe the project setup and how to use the application.
+- Improving **camera controls** and **movement** algorithms (Algorithms and Data Structures).
+- Refactoring the scene management and texture handling code to replace static arrays with dynamic containers (Data Structures).
+- Implementing better **error handling** and **logging** (Software Design).
+- Adding **comments** and improving **documentation** (Software Design).
 
-## Alignment with Course Outcomes
+These enhancements will demonstrate my ability to improve **software design**, apply **algorithmic principles** to solve real-world problems, and increase the **efficiency and functionality** of a complex system.
 
-The planned enhancements align well with several course outcomes, particularly in the areas of software design, algorithmic problem-solving, and usability:
+---
 
-1. **Software Design**: Refactoring the code and implementing modular components demonstrates my ability to design maintainable and scalable systems.
-2. **Algorithmic Problem-Solving**: By improving the camera controls and projection switching, I will apply algorithmic thinking to solve real-world user interaction problems.
-3. **Performance Optimization**: Replacing fixed-size arrays with `std::vector` and optimizing resource loading will improve the performance and scalability of the system.
-4. **Testing**: The improvements will be validated through extensive testing, ensuring that new features (like dynamic camera speed and error handling) work seamlessly.
-5. **Documentation**: Improving comments and documentation throughout the project aligns with the course's emphasis on writing clear, maintainable code.
+## 2. MongoDB Database Project (Databases)
+
+### Existing Functionality
+
+The **MongoDB Database Project** is a database system for tracking student grades, courses, and scores. It uses **MongoDB** for data storage and **JavaScript** for querying the database. The existing functionality includes:
+
+1. **Data Modeling**: The database schema defines collections for students, courses, and scores, with relationships between them using MongoDB’s document structure.
+
+2. **Querying**: Users can query the database to retrieve student grades, calculate averages, and list course enrollments.
+
+3. **Basic CRUD Operations**: The project includes basic **Create**, **Read**, **Update**, and **Delete** operations to manipulate student records, courses, and scores.
+
+### Code Analysis
+
+The current **MongoDB project** has several areas that need improvement:
+
+- **Handling Missing Data**: The database does not handle **missing values** (e.g., NULL scores) efficiently, which can lead to incomplete or incorrect query results.
+
+  **Improvement Plan**: I plan to implement a **COALESCE function** or similar logic to handle NULL or missing data by providing fallback values or calculating averages based on available data.
+
+- **Query Efficiency**: Some of the queries are not optimized for performance, especially when dealing with large datasets.
+
+  **Improvement Plan**: I will focus on **query optimization** by utilizing **indexes** and restructuring queries to reduce the time complexity. This will make the database more scalable for larger datasets.
+
+- **Data Integrity**: There is limited validation of data before it is entered into the database, which could lead to inconsistencies.
+
+  **Improvement Plan**: I will add **validation checks** to ensure that the data being inserted into the database adheres to the expected format (e.g., valid scores, course IDs).
+
+- **Security and Access Control**: The project currently lacks **authentication** and **authorization** mechanisms for users accessing the database.
+
+  **Improvement Plan**: I will implement **role-based access control** (RBAC) and other security measures to ensure that sensitive data is protected and access is restricted to authorized users.
+
+- **Documentation**: As with the 3D project, there is a lack of **comments** and **documentation**, making the code difficult to understand and maintain.
+
+  **Improvement Plan**: I will add **comments** and improve the **README** file to explain the structure and use of the database, including instructions for setup and querying.
+
+### Enhancement Plan
+
+The enhancements for the **MongoDB project** will focus on:
+
+- Improving **data handling** and **query optimization** (Databases).
+- Adding **data validation** and **error handling** (Software Design).
+- Implementing **security** measures such as authentication and access control (Software Design).
+- Adding detailed **comments** and improving **documentation** (Software Design).
+
+These changes will address key areas in **database management**, **query optimization**, **data integrity**, and **security**, and will showcase my ability to design and optimize database systems that are scalable, reliable, and secure.
+
+---
 
 ## Conclusion
 
-In this code review, I have identified several areas for improvement in my 3D modeling project, including code structure, error handling, performance, and functionality. The planned enhancements, such as refactoring for modularity, replacing fixed-size arrays with dynamic containers, and improving camera controls, will address these issues while demonstrating my ability to apply best practices in software design and development. I look forward to implementing these changes and continuing to refine my skills in C++ and OpenGL.
+In this code review, I have presented a detailed analysis of two key artifacts in my ePortfolio: the **3D Modeling Project** and the **MongoDB Database Project**. For each artifact, I have identified the existing functionality, pinpointed areas for improvement, and outlined a detailed plan for enhancements. These enhancements will align with the course outcomes across **Software Design**, **Algorithms and Data Structures**, and **Databases**, demonstrating my ability to improve and optimize complex systems while adhering to best practices in software development.
+
+By making these improvements, I will not only enhance the functionality and usability of each project but also showcase my growth and proficiency in **database management**, **algorithmic problem solving**, and **software design**.
+
