@@ -1,31 +1,34 @@
-# Database Artifact Narrative
+# Algorithms and Data Structure Artifact Narrative
 
 ## Artifact Description
-The artifact for this milestone is a database project initially developed during the early stages of my Computer Science degree. The project focused on creating a database to track student grades, courses, and scores. Initially, this database was a foundational exercise in SQL and database design but lacked advanced features such as handling missing data, optimizing query performance, and ensuring data integrity. As part of my ePortfolio enhancement process, I revisited the project to address these gaps and transform it into a more robust, efficient, and functional database system.
+The artifact I selected for this milestone is a 3D modeling project initially created during a previous class. The project utilizes OpenGL to render 3D objects and manage scene components such as camera controls and transformations. While the original project included a basic implementation of the ViewManager class to handle camera movement and user input, it lacked advanced features such as smooth projection switching, dynamic camera speed adjustments, and intuitive user input handling. As part of my enhancement process, I focused on improving these aspects to refine the usability and performance of the project.
 
 ## Justification for Inclusion in the ePortfolio
-I selected this artifact because it demonstrates my progression in database management and SQL optimization skills. The original version of this project served as a baseline, and the enhancements highlight my ability to identify and address practical challenges in database systems. Specifically, I focused on improving functionality by resolving missing data issues using the COALESCE function and introducing fallback logic for incomplete records. Additionally, I optimized query performance to make the system more scalable and reliable.
+I chose this artifact for inclusion in my ePortfolio because it highlights my ability to work with computer graphics concepts that require a strong foundation in algorithms, data structures, and software engineering. Enhancing the ViewManager class demonstrates my skills in implementing efficient algorithms for camera navigation and user input processing.
 
-These enhancements showcase my proficiency in:
-- **SQL query optimization**: I refined queries to improve performance and handle edge cases, such as missing or incomplete data.
-- **Data integrity solutions**: By introducing fallback mechanisms for missing scores, I ensured the reliability and usability of the database.
-- **Real-world problem solving**: This project reflects my ability to apply theoretical knowledge to address practical database challenges.
+Key improvements include:
+- **Smooth Mouse-Driven Camera Movement**: This required designing algorithms to process mouse inputs in real-time and update the camera's position and orientation fluidly.
+- **Dynamic Camera Speed Adjustments**: The camera speed now adjusts based on user input, enhancing responsiveness while maintaining consistency with other features.
+- **Projection Switching Mechanism**: Implemented matrix operations to toggle between perspective and orthographic views, improving the user’s ability to interact with the 3D scene.
+
+These enhancements illustrate my ability to design and implement efficient algorithms while considering the practical constraints of real-time applications.
 
 ## Reflection on the Enhancement Process
-Revisiting and enhancing this database project was a transformative experience. Initially, I lacked a deep understanding of handling missing data, optimizing queries, or ensuring database scalability. Through this process, I developed advanced skills that allowed me to address these challenges effectively.
+Enhancing this artifact provided a valuable learning experience, particularly in the application of algorithms and data structures to real-world challenges.
 
 ### Key Learnings:
-- **Handling Missing Data**: I implemented the COALESCE function and average calculations to resolve NULL values, ensuring meaningful and accurate results without compromising data integrity.
-- **Optimization Techniques**: By analyzing query performance, I made changes that reduced processing time and improved scalability, showcasing my understanding of efficient database design.
-- **Testing and Validation**: I learned the importance of rigorous testing to prevent new errors or inconsistencies when implementing enhancements.
+- **Camera Control Optimization**: I refined the camera movement algorithms to achieve a smooth and natural user experience. This involved iterative testing and fine-tuning to eliminate jerky or slow movements.
+- **Balancing Features and Performance**: Implementing dynamic camera speed adjustments required carefully balancing responsiveness with functionality to ensure a seamless user experience.
+- **Matrix Operations for Projection Switching**: Understanding and applying matrix transformations allowed me to implement an effective projection toggling mechanism, further enhancing the user interface.
 
 ### Challenges:
-One significant challenge was balancing the fallback logic for missing data with the need to maintain the accuracy and integrity of the database. I spent considerable time refining this logic to ensure that it produced meaningful results without introducing inaccuracies.
+- **Mouse-Driven Camera Movement**: Early versions of the camera controls were either too slow or unresponsive. Iterative refinement and optimization were necessary to achieve a smooth and intuitive experience.
+- **Integration of Features**: Ensuring the camera speed adjustments worked in harmony with projection switching and movement controls without introducing inconsistencies required significant attention to detail.
 
 ### Course Outcomes Met:
-- **Database Design and Management**: Enhanced my ability to create and optimize reliable, scalable databases.
-- **Query Optimization**: Demonstrated advanced SQL techniques, including handling missing data and optimizing performance.
-- **Data Integrity and Security**: Improved my understanding of maintaining database integrity and ensuring data recovery mechanisms.
+- **Designing and Evaluating Computing Solutions**: The refinement of the ViewManager demonstrates my ability to design solutions that enhance functionality and usability.
+- **Algorithmic Problem-Solving**: This artifact reflects my ability to apply advanced algorithms for camera navigation, user input processing, and matrix operations.
+- **Real-Time System Optimization**: I demonstrated the use of innovative techniques to address the challenges of real-time graphics applications, improving both performance and user experience.
 
-### Summary:
-Through this enhancement process, I applied new skills, solved complex problems, and demonstrated my growth as a Computer Science student. The improved artifact reflects my ability to adapt and refine a project over time, showcasing both technical proficiency and problem-solving abilities.
+## Conclusion
+The enhancements made to the ViewManager class significantly improved the functionality and usability of my 3D modeling project. This artifact showcases my ability to apply algorithmic principles and data structures to solve real-world problems in interactive applications. It represents a critical component of my ePortfolio, highlighting my technical skills and my growth in designing and optimizing systems. This project is a strong example of my competencies in algorithms and data structures, as well as my ability to address complex challenges in computer science.
